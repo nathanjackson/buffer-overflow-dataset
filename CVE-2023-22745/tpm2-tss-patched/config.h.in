@@ -1,0 +1,193 @@
+/* config.h.in.  Generated from configure.ac by autoheader.  */
+
+/* Default FAPI profile used for testing */
+#undef DEFAULT_TEST_FAPI_PROFILE
+
+/* Disable Vendor Extensions */
+#undef DISABLE_VENDOR
+
+/* DISABLE WEAK CRYPTO ALGORITHMS */
+#undef DISABLE_WEAK_CRYPTO
+
+/* "The default TCTIs configuration string" */
+#undef ESYS_TCTI_DEFAULT_CONFIG
+
+/* "The default TCTI library file" */
+#undef ESYS_TCTI_DEFAULT_MODULE
+
+/* Perform integration tests without EK certificate verification */
+#undef FAPI_TEST_EK_CERT_LESS
+
+/* If lib curl has curl_url_strerror function */
+#undef HAVE_CURL_URL_STRERROR
+
+/* Define to 1 if you have the declaration of `cygwin_conv_path', and to 0 if
+   you don't. */
+#undef HAVE_DECL_CYGWIN_CONV_PATH
+
+/* Define if you have the GNU dld library. */
+#undef HAVE_DLD
+
+/* Define to 1 if you have the `dlerror' function. */
+#undef HAVE_DLERROR
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#undef HAVE_DLFCN_H
+
+/* Define if you have the _dyld_func_lookup function. */
+#undef HAVE_DYLD
+
+/* Support EVP_sm3 in openssl */
+#undef HAVE_EVP_SM3
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#undef HAVE_INTTYPES_H
+
+/* Define if you have the libdl library or equivalent. */
+#undef HAVE_LIBDL
+
+/* Define if libdlloader will be built on this platform */
+#undef HAVE_LIBDLLOADER
+
+/* Define to 1 if you have the <memory.h> header file. */
+#undef HAVE_MEMORY_H
+
+/* Define to 1 if you have the `reallocarray' function. */
+#undef HAVE_REALLOCARRAY
+
+/* Define if you have the shl_load function. */
+#undef HAVE_SHL_LOAD
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#undef HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#undef HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#undef HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#undef HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#undef HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#undef HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#undef HAVE_UNISTD_H
+
+/* use mssim TCTI for integration tests */
+#undef INTEGRATION_TCTI_MSSIM
+
+/* Support for writing to a log file is enabled */
+#undef LOG_FILE_ENABLED
+
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
+#undef LT_OBJDIR
+
+/* "Trace log level" */
+#undef MAXLOGLEVEL
+
+/* mbedTLS cryptographic backend */
+#undef MBED
+
+/* Define if debugging is disabled */
+#undef NDEBUG
+
+/* disable use of dlopen */
+#undef NO_DL
+
+/* OpenSSL cryptographic backend */
+#undef OSSL
+
+/* Name of package */
+#undef PACKAGE
+
+/* Define to the address where bug reports for this package should be sent. */
+#undef PACKAGE_BUGREPORT
+
+/* Define to the full name of this package. */
+#undef PACKAGE_NAME
+
+/* Define to the full name and version of this package. */
+#undef PACKAGE_STRING
+
+/* Define to the one symbol short name of this package. */
+#undef PACKAGE_TARNAME
+
+/* Define to the home page for this package. */
+#undef PACKAGE_URL
+
+/* Define to the version of this package. */
+#undef PACKAGE_VERSION
+
+/* Allow usage of self generated root certificate */
+#undef SELF_GENERATED_CERTIFICATE
+
+/* Define to 1 if you have the ANSI C header files. */
+#undef STDC_HEADERS
+
+/* System config dir */
+#undef SYSCONFDIR
+
+/* TCTI FOR COMMAND BASED ACCESS TO TPM2 DEVICE */
+#undef TCTI_CMD
+
+/* TCTI FOR DEV TPM */
+#undef TCTI_DEVICE
+
+/* TCTI FOR FUZZING */
+#undef TCTI_FUZZING
+
+/* TCTI FOR MS SIMULATOR */
+#undef TCTI_MSSIM
+
+/* TCTI HELPER FOR SPI BASED ACCESS TO TPM2 DEVICE */
+#undef TCTI_SPI_HELPER
+
+/* TCTI FOR SWTPM */
+#undef TCTI_SWTPM
+
+/* FAPI forced async spinning */
+#undef TEST_FAPI_ASYNC
+
+/* Enable for UNIT testing */
+#undef UNIT
+
+/* Enable extensions on AIX 3, Interix.  */
+#ifndef _ALL_SOURCE
+# undef _ALL_SOURCE
+#endif
+/* Enable GNU extensions on systems that have them.  */
+#ifndef _GNU_SOURCE
+# undef _GNU_SOURCE
+#endif
+/* Enable threading extensions on Solaris.  */
+#ifndef _POSIX_PTHREAD_SEMANTICS
+# undef _POSIX_PTHREAD_SEMANTICS
+#endif
+/* Enable extensions on HP NonStop.  */
+#ifndef _TANDEM_SOURCE
+# undef _TANDEM_SOURCE
+#endif
+/* Enable general extensions on Solaris.  */
+#ifndef __EXTENSIONS__
+# undef __EXTENSIONS__
+#endif
+
+
+/* Version number of package */
+#undef VERSION
+
+/* Define to 1 if on MINIX. */
+#undef _MINIX
+
+/* Define to 2 if the system does not provide POSIX.1 features except with
+   this defined. */
+#undef _POSIX_1_SOURCE
+
+/* Define to 1 if you need to in order for `stat' and other things to work. */
+#undef _POSIX_SOURCE
