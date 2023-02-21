@@ -10,17 +10,43 @@ import elftools.elf.elffile as elf
 def get_lines(binary, base_address=0x0):
     elf_binary = elf.ELFFile(binary)
     dwarf = elf_binary.get_dwarf_info()
-    lines = defaultdict(lambda: defaultdict(lambda:[]))
-    for cu in dwarf.iter_CUs():
-        lp = dwarf.line_program_for_CU(cu)
-        files = lp['file_entry']
-        directories = ["."] + [str(d, 'utf8') for d in lp['include_directory']]
+    dwarfinfo = elf_binary.get_dwarf_info()
+
+    line_starts = dict()
+    line_ends = dict()
+
+    for cu in dwarfinfo.iter_CUs():
+        lp = dwarfinfo.line_program_for_CU(cu)
+        prev_state = None
         for lpe in lp.get_entries():
-            if lpe.state:
-                lfile = files[lpe.state.file-1]
-                (lines[(directories[lfile['dir_index']], str(lfile['name'], 'utf8'))]
-                    [lpe.state.line].append((lpe.command, lpe.state.address+base_address)))
-    return lines
+            if lpe.state is None:
+                continue
+            if prev_state:
+                filename = lp['file_entry'][prev_state.file - 1].name.decode("utf-8")
+                line = prev_state.line
+                addr1 = prev_state.address
+                addr2 = lpe.state.address
+
+                key = f"{filename}:{line}"
+                if key not in line_starts:
+                    line_starts[key] = addr1
+                else:
+                    cs = line_starts[key]
+                    line_starts[key] = min(cs, addr1)
+
+                if key not in line_ends:
+                    line_ends[key] = addr2
+                else:
+                    cs = line_ends[key]
+                    line_ends[key] = max(cs, addr2)
+
+            if lpe.state.end_sequence:
+                prev_state = None
+            else:
+                prev_state = lpe.state
+
+    return line_starts, line_ends    
+
 
 def get_addrs(filename, lineno, lines):
     # Also needs to be fixed here
@@ -52,11 +78,12 @@ if __name__ == "__main__":
             location, label = line.split(",")
             src_file, src_line = location.split(":")
             src_line = int(src_line, 0)
+            src_file = os.path.basename(src_file)
 
-            lines = get_lines(b)
-            addrs = get_addrs(src_file, src_line, lines)
-            start_addr = min(addrs)
-            end_addr = max(addrs)
-            
+            starts, ends = get_lines(b)
+            key = f"{src_file}:{src_line}"
+            start_addr = starts[key]
+            end_addr = ends[key]
+
             o.write(f"{location},{label},{hex(start_addr)},{hex(end_addr)}\n")
 
