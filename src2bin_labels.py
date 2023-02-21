@@ -23,6 +23,7 @@ def get_lines(binary, base_address=0x0):
                 continue
             if prev_state:
                 filename = lp['file_entry'][prev_state.file - 1].name.decode("utf-8")
+                filename = os.path.basename(filename)
                 line = prev_state.line
                 addr1 = prev_state.address
                 addr2 = lpe.state.address
@@ -39,6 +40,8 @@ def get_lines(binary, base_address=0x0):
                 else:
                     cs = line_ends[key]
                     line_ends[key] = max(cs, addr2)
+
+                #print(filename, line, addr1, addr2)
 
             if lpe.state.end_sequence:
                 prev_state = None
